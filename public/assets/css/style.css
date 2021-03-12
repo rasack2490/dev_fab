@@ -1,0 +1,109 @@
+*{
+    font-family: 'Open Sans', sans-serif;
+    padding: 0;
+    margin: 0;
+
+    /*font-family: 'Roboto', sans-serif;*/
+}
+/*//////////////////////////////////////////////////////////////
+//                                                           //
+//                        master.blade                       //
+//////////////////////////////////////////////////////////////*/
+.backg{
+   background-image: url("../../assets/images/back1.png");
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+
+   font: 600 16px/18px 'Open Sans', sans-serif
+}
+.write{
+    color: #5393c9;
+    font-size: 60px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    margin-left: 80px;
+
+
+}
+.bien{
+    color: white;
+    font-size: 80px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.mot{
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 60px;
+
+}
+
+.form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+
+
+
+}
+.form .tab-tete{
+    height: 50px;
+    line-height: 50px;
+}
+.form .tab-tete > div{
+    width: 50%;
+    float: left;
+    text-align: center;
+    background: #ddd;
+    color: #555;
+    cursor: pointer;
+}
+.form .tab-tete > div.active{
+    background: #f5f5f5;
+    color: #111;
+}
+.form .tab-contenu{
+    padding: 20px;
+}
+.form .tab-contenu .form-element{
+    margin: 10px 0;
+}
+.form .tab-contenu .form-element input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #aaa;
+    font-size: 16px;
+    background: #f5f5f5;
+    border-radius: 20px;
+    outline: none;
+}
+.form .tab-contenu .form-element label{
+    color: #111;
+}
+.form .tab-contenu .form-element .button{
+    margin-top: 50px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background:#1F1C18 ;
+    color: #ffffff;
+    font-size: 18px;
+    text-decoration: uppercase;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.form .tab-contenu .form-element .button:hover{
+    background: #8E0E00;
+}
+.form .tab-contenu > div.active{
+    display: block;
+}
+.form .tab-contenu > div{
+    display:none;
+}
+
+
