@@ -8,6 +8,9 @@ class homeController extends Controller
 {
     //
     public function welcome(){
-        return view('layout.master');
+        return view('login');
+    }
+    public function inscription(){
+        return view('inscription');
     }
 }

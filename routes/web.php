@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\homeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +19,13 @@ use Illuminate\Support\Facades\Route;
 /*Route::get('/', function () {
     return view('layout/master');
 });*/
-Route::get('/', 'homeController@welcome');
+Route::get('/', 'homeController@welcome')->name('home');
+Route::get('/inscription', 'homeController@inscription');
 Route::post('/login', 'AuthController@authentificate')->name('login');
+Route::post('/inscription', 'AuthController@inscrit')->name('inscription');
 Route::get('/admin', 'AuthController@admin');
+
+
 
 
 
