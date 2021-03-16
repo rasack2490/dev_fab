@@ -9,9 +9,11 @@ use App\utilisateur;
 use Illuminate\Support\Facades\Auth;
 
 
+
 class AuthController extends Controller
 {
     //
+
     public function authentificate(Request $request){
         $request->validate([
             'email' => 'required|string|email',
@@ -21,20 +23,23 @@ class AuthController extends Controller
             $request->input('email'),
             $request->input('password')
         ];
-        
-
         $credentials = $request->only('email', 'password');
-            
-            
+
+        $userCount = DB::select('select count(*) from users where registed =?', [true]);
+        print_r($userCount);
+
         if (Auth::attempt($credentials)) {
            // $is_registed = DB::select('select registed, role  from users where email=? AND password=?',$inputs);
            $results = DB::select('select registed, role from users where email =?', [$inputs[0]]);
             print_r($results);
-            if($results[0]->registed==true && $results[0]->role== true){ 
+            if($results[0]->registed==true && $results[0]->role== true){
             return view('/admin')->with($inputs);
             }
-            if($results[0]->registed==false && $results[0]->role== false){
+            if($results[0]->registed==true && $results[0]->role== false){
                 return view('/developpeur')->with($inputs);
+            }
+            if($results[0]->registed==false && $results[0]->role== false){
+                return view('/attente')->with($inputs);
             }
         }
 
@@ -49,7 +54,7 @@ class AuthController extends Controller
             'email' => 'required|string|email|unique:users,email',
             'password' => 'required|string',
         ]);
-         
+
         $role = false;
         $registed = false;
         $data = [
@@ -64,9 +69,9 @@ class AuthController extends Controller
         ];
         $resultat = DB::insert('insert into users (nom, prenom, email, password, matricule, role, registed) values (?, ?, ?, ?, ?, ?, ?)', $data);
         return view('login');
-        
+
         //$results = DB::select('select email from users where email =?', [$data[2]]);
-        
+
     }
     public function admin(){
         return view('admin');

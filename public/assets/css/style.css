@@ -18,6 +18,15 @@
 
    font: 600 16px/18px 'Open Sans', sans-serif
 }
+.backimg{
+    background-image: url("../../assets/images/back_ori.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+    font: 600 16px/18px 'Open Sans', sans-serif
+ }
 .write{
     color: #5393c9;
     font-size: 60px;
@@ -43,6 +52,9 @@
 .contenu{
     background: #e5e6e7a8;
     border-radius: 20px;
+}
+.info{
+    width: 100%;
 }
 
 
