@@ -6,8 +6,9 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link href="assets/css/style.css" rel="stylesheet">
   <title>
-    Material Dashboard by Creative Tim
+    bienvenu a la fabrique des developpeurs
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -23,7 +24,7 @@
 
 <body class="backimg">
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="orange" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -293,20 +294,7 @@
 
     });
 
-    $(".liste").children("ul").mouseenter(function(){
 
-				var articleParent = $(this).parents(".liste");
-
-				articleParent.find("ul li:first-child").removeClass("active");
-
-				articleParent.next().children("li").addclass("active");
-            }).mouseleave(function(){
-
-					articleParent.find("ul li").removeClass("active");
-					articleParent.find("ul li:first-child").addClass("active");
-
-					alert("ok");
-			)};
   </script>
 </body>
 

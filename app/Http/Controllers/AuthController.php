@@ -14,6 +14,15 @@ class AuthController extends Controller
 {
     //
 
+    public function dev(){
+        return view('/developpeur');
+    }
+    public function supprime(Request $request){
+        $email = $request->input('email');
+        $del = DB::delete('delete from users where email=?',[$email]);
+
+    }
+
     public function authentificate(Request $request){
         $request->validate([
             'email' => 'required|string|email',
@@ -25,21 +34,27 @@ class AuthController extends Controller
         ];
         $credentials = $request->only('email', 'password');
 
-        $userCount = DB::select('select count(*) from users where registed =?', [true]);
-        print_r($userCount);
+        $userCount = DB::select('select count(*) as place from users where registed =?', [true]);
+        $places = 50;
+        $places= $places-$userCount[0]->place;
+        $days = DB::select('select * from days');
+
+
+
+        $devs = DB::select('select nom, prenom, email, matricule from users where registed =1 AND role=0');
 
         if (Auth::attempt($credentials)) {
            // $is_registed = DB::select('select registed, role  from users where email=? AND password=?',$inputs);
            $results = DB::select('select registed, role from users where email =?', [$inputs[0]]);
-            print_r($results);
+
             if($results[0]->registed==true && $results[0]->role== true){
-            return view('/admin')->with($inputs);
+            return view('/admin_links.dash',['places' => $places, 'days' =>$days, 'devs'=>$devs, )->with($inputs);
             }
             if($results[0]->registed==true && $results[0]->role== false){
-                return view('/developpeur')->with($inputs);
+                return redirect('/developpeur')->with($inputs);
             }
             if($results[0]->registed==false && $results[0]->role== false){
-                return view('/attente')->with($inputs);
+                return redirect('/attente')->with($inputs);
             }
         }
 

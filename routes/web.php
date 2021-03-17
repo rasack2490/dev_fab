@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\homeController;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +24,13 @@ Route::get('/inscription', 'homeController@inscription');
 Route::post('/login', 'AuthController@authentificate')->name('login');
 Route::post('/inscription', 'AuthController@inscrit')->name('inscription');
 Route::get('/admin', 'AuthController@admin');
+Route::post('/admin', 'AuthController@supprime')->name('del');
+Route::get('/developpeur', 'AuthController@dev');
+//links admin
+Route::get('/listdev', 'AdminController@listeDev')->name('dev');
+Route::get('/dash', 'AdminController@dash')->name('dash');
+Route::get('/devAccept', 'AdminController@devAccept')->name('devAccept');
+//Route::get('/del', 'AdminController@index');
 
 
 
