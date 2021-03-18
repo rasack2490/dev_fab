@@ -38,7 +38,7 @@
                                 @csrf
                                 <td>
                                     <input type="hidden" name="email" value="{{$devs->email}}">
-                                <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Voulez vous vraiment supprimer?')">Supprimer</button></td>
+                                <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Voulez vous vraiment supprimer?')"><i class="bi bi-trash-fill"></i>Supprimer</button></td>
                                 </form>
                             </tr>
                         @endforeach

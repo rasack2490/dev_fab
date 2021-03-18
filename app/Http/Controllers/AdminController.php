@@ -40,6 +40,32 @@ class AdminController extends Controller
         return redirect()->route('devAccept');
     }
 
+    public function decline(Request $request){
+        $email = $request->input('refuse');
+        $del = DB::delete('delete from users where email=?',[$email]);
+        return redirect()->route('devAccept');
+    }
 
+    public function program(){
+        return view('admin_links.parametre');
+    }
+    public function horaire(Request $request){
+        $data = [
+            $request->input('matin'),
+            $request->input('soir')
+        ];
+        DB::update("update horaires set heur_reserve='$data[0]' where id_horaire = 1");
+        DB::update("update horaires set heur_reserve='$data[1]' where id_horaire = 2");
+        $alert= '<script>alert(<h3 class="text-success">Enregister avec succès</h3>)</script>';
+        return redirect()->route('parametre')->with($alert);
+    }
+    public function modiplace(Request $request){
+        $data = [
+            $request->input('jour'),
+            $request->input('place')
+        ];
+        DB::update("update days set places='$data[1]' where jours = ?",[$data[0]]);
+        return redirect()->route('parametre');
+    }
 
 }

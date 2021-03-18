@@ -35,9 +35,15 @@
                                 <td>{{$dev_accept->email}}</td>
                                 <td>{{$dev_accept->matricule}}</td>
                                 <td>{{$dev_accept->numero}}</td>
+                                <form action="{{route('refuse')}}" method="post">
+                                    @csrf
+                                <td>
+                                    <input type="hidden" name="refuse" value="{{$dev_accept->email}}">
+                                    <button type="submit" class="btn btn-xs btn-warning" onclick="return confirm('Voulez vous refuser inscription?')">Refuser</button>
+                                </td>
+                                </form>
                                 <form action="{{route('accept')}}" method="post">
                                     @csrf
-                                <td><div class="btn btn-warning">Refuser</div></td>
                                 <td>
                                     <input type="hidden" name="validate" value="{{$dev_accept->email}}">
                                     <button type="submit" class="btn btn-xs btn-success" onclick="return confirm('Voulez vous accepter inscription?')">Accepter</button>

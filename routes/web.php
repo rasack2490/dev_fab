@@ -32,6 +32,11 @@ Route::get('/dash', 'AdminController@dash')->name('dash');
 Route::get('/devAccept', 'AdminController@devAccept')->name('devAccept');
 Route::post('/del', 'AdminController@supprime')->name('del');
 Route::post('/devalidate', 'AdminController@accept')->name('accept');
+Route::post('/decline', 'AdminController@decline')->name('refuse');
+
+Route::get('/parametre','AdminController@program')->name('parametre');
+Route::post('/horaire', 'AdminController@horaire')->name('horaire');
+Route::post('/place', 'AdminController@modiplace')->name('place');
 //Route::get('/del', 'AdminController@index');
 
 

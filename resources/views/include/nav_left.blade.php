@@ -25,7 +25,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-item nav-link" href="admin_links/parametre.blade.php" data-toggle="tab">
+            <a class="nav-item nav-link" href="{{URL::route('parametre')}}">
             <i class="bi bi-gear"></i>
               <p>Parametres</p>
             </a>
