@@ -17,10 +17,12 @@ class CreateReservationsTable extends Migration
             $table->id();
             $table->string('reser_email');
             $table->unsignedBigInteger('reser_horaire');
+            $table->unsignedBigInteger('reser_day');
             $table->boolean('reserved');
             $table->timestamps();
             $table->foreign('reser_email')->references('email')->on('Users');
             $table->foreign('reser_horaire')->references('id_horaire')->on('horaires');
+            $table->foreign('reser_day')->references('id_day')->on('days');
 
         });
     }

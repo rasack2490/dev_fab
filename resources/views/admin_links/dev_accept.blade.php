@@ -21,6 +21,7 @@
                             <th scope="col">Prenom</th>
                             <th scope="col">Email</th>
                             <th scope="col">Matricule</th>
+                            <th scope="col">Numero</th>
                             <th scope="col">Action</th>
                             <th scope="col">Action</th>
 
@@ -33,6 +34,7 @@
                                 <td>{{$dev_accept->prenom}}</td>
                                 <td>{{$dev_accept->email}}</td>
                                 <td>{{$dev_accept->matricule}}</td>
+                                <td>{{$dev_accept->numero}}</td>
                                 <td><div class="btn btn-warning">Refuser</div></td>
                                 <td><div class="btn btn-success">Accepter</div></td>
                             </tr>

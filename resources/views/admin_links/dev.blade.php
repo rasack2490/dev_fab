@@ -21,6 +21,7 @@
                             <th scope="col">Prenom</th>
                             <th scope="col">Email</th>
                             <th scope="col">Matricule</th>
+                            <th scope="col">Numero</th>
                             <th scope="col">Action</th>
 
                         </tr>
@@ -32,6 +33,7 @@
                                 <td>{{$devs->prenom}}</td>
                                 <td>{{$devs->email}}</td>
                                 <td>{{$devs->matricule}}</td>
+                                <td>{{$devs->numero}}</td>
                                 <form action="{{ route('del') }}" method="post">
                                 <td>
                                     <input type="hidden" name="email" value="{{$devs->email}}">

@@ -41,14 +41,14 @@ class AuthController extends Controller
 
 
 
-        $devs = DB::select('select nom, prenom, email, matricule from users where registed =1 AND role=0');
+        $devs = DB::select('select nom, prenom, email, matricule, numero from users where registed =1 AND role=0');
 
         if (Auth::attempt($credentials)) {
            // $is_registed = DB::select('select registed, role  from users where email=? AND password=?',$inputs);
            $results = DB::select('select registed, role from users where email =?', [$inputs[0]]);
 
             if($results[0]->registed==true && $results[0]->role== true){
-            return view('/admin_links.dash',['places' => $places, 'days' =>$days, 'devs'=>$devs, )->with($inputs);
+            return view('/admin_links.dash',['places' => $places, 'days' =>$days, 'devs'=>$devs, ])->with($inputs);
             }
             if($results[0]->registed==true && $results[0]->role== false){
                 return redirect('/developpeur')->with($inputs);
@@ -67,6 +67,7 @@ class AuthController extends Controller
             'prenom' => 'required|string',
             'matricule' => 'required|string',
             'email' => 'required|string|email|unique:users,email',
+            'numero'=> 'required|string',
             'password' => 'required|string',
         ]);
 
@@ -78,11 +79,12 @@ class AuthController extends Controller
             $request->input('email'),
             $pass = bcrypt($request->input('password')),
             $request->input('matricule'),
+            $request->input('numero'),
             $role,
             $registed
 
         ];
-        $resultat = DB::insert('insert into users (nom, prenom, email, password, matricule, role, registed) values (?, ?, ?, ?, ?, ?, ?)', $data);
+        $resultat = DB::insert('insert into users (nom, prenom, email, password, matricule, numero, role, registed) values (?, ?, ?, ?, ?, ?, ?, ?)', $data);
         return view('login');
 
         //$results = DB::select('select email from users where email =?', [$data[2]]);

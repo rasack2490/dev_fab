@@ -22,6 +22,12 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
+                    <input type="text" class="form-control mb-3 @error('numero') is-invalid @enderror" name="numero" placeholder="numero telephone">
+                    @error('numero')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     <input type="email" class="form-control mb-3 @error('email') is-invalid @enderror" name="email" placeholder="Email" >
                     @error('email')
                         <span class="invalid-feedback" role="alert">
