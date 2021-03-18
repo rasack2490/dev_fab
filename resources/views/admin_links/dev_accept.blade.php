@@ -35,8 +35,14 @@
                                 <td>{{$dev_accept->email}}</td>
                                 <td>{{$dev_accept->matricule}}</td>
                                 <td>{{$dev_accept->numero}}</td>
+                                <form action="{{route('accept')}}" method="post">
+                                    @csrf
                                 <td><div class="btn btn-warning">Refuser</div></td>
-                                <td><div class="btn btn-success">Accepter</div></td>
+                                <td>
+                                    <input type="hidden" name="validate" value="{{$dev_accept->email}}">
+                                    <button type="submit" class="btn btn-xs btn-success" onclick="return confirm('Voulez vous accepter inscription?')">Accepter</button>
+                                </td>
+                                </form>
                             </tr>
                         @endforeach
                     </tbody>

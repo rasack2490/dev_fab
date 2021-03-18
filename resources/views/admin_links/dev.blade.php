@@ -35,9 +35,10 @@
                                 <td>{{$devs->matricule}}</td>
                                 <td>{{$devs->numero}}</td>
                                 <form action="{{ route('del') }}" method="post">
+                                @csrf
                                 <td>
                                     <input type="hidden" name="email" value="{{$devs->email}}">
-                                <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Are you sure?')">Delete</button></td>
+                                <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Voulez vous vraiment supprimer?')">Supprimer</button></td>
                                 </form>
                             </tr>
                         @endforeach

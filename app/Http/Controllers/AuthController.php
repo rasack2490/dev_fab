@@ -17,11 +17,7 @@ class AuthController extends Controller
     public function dev(){
         return view('/developpeur');
     }
-    public function supprime(Request $request){
-        $email = $request->input('email');
-        $del = DB::delete('delete from users where email=?',[$email]);
-
-    }
+   
 
     public function authentificate(Request $request){
         $request->validate([

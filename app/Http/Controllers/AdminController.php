@@ -28,6 +28,18 @@ class AdminController extends Controller
         return view('admin_links.dev_accept', ['dev_accept'=>$dev_accept]);
     }
 
+    public function supprime(Request $request){
+        $email = $request->input('email');
+        $del = DB::delete('delete from users where email=?',[$email]);
+        return redirect()->route('dev');
+    }
+
+    public function accept(Request $request){
+        $email = $request->input('validate');
+        DB::update('update users set registed = 1 where email = ?', [$email]);
+        return redirect()->route('devAccept');
+    }
+
 
 
 }

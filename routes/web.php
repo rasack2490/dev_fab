@@ -24,12 +24,14 @@ Route::get('/inscription', 'homeController@inscription');
 Route::post('/login', 'AuthController@authentificate')->name('login');
 Route::post('/inscription', 'AuthController@inscrit')->name('inscription');
 Route::get('/admin', 'AuthController@admin');
-Route::post('/admin', 'AuthController@supprime')->name('del');
+
 Route::get('/developpeur', 'AuthController@dev');
 //links admin
 Route::get('/listdev', 'AdminController@listeDev')->name('dev');
 Route::get('/dash', 'AdminController@dash')->name('dash');
 Route::get('/devAccept', 'AdminController@devAccept')->name('devAccept');
+Route::post('/del', 'AdminController@supprime')->name('del');
+Route::post('/devalidate', 'AdminController@accept')->name('accept');
 //Route::get('/del', 'AdminController@index');
 
 
