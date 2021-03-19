@@ -31,7 +31,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-item nav-link" href="admin_links/profile.blade.php" data-toggle="tab">
+            <a class="nav-item nav-link" href="{{URL::route('profile')}}" >
               <i class="material-icons">person</i>
               <p>User Profile</p>
             </a>

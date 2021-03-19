@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Session;
 class AdminController extends Controller
 {
     //
@@ -67,5 +67,8 @@ class AdminController extends Controller
         DB::update("update days set places='$data[1]' where jours = ?",[$data[0]]);
         return redirect()->route('parametre');
     }
-
+    public function showprofile(){
+      $info =  DB::select('select * from users where email=?',[Session::get('email')]);
+      return view('admin_links.profile',['info'=>$info]);
+    }
 }

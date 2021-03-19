@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\utilisateur;
 //use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 
 
@@ -17,7 +18,7 @@ class AuthController extends Controller
     public function dev(){
         return view('/developpeur');
     }
-   
+
 
     public function authentificate(Request $request){
         $request->validate([
@@ -38,13 +39,15 @@ class AuthController extends Controller
 
 
         $devs = DB::select('select nom, prenom, email, matricule, numero from users where registed =1 AND role=0');
+        Session::put('email', $inputs[0]);
+
 
         if (Auth::attempt($credentials)) {
            // $is_registed = DB::select('select registed, role  from users where email=? AND password=?',$inputs);
            $results = DB::select('select registed, role from users where email =?', [$inputs[0]]);
-
+            
             if($results[0]->registed==true && $results[0]->role== true){
-            return view('/admin_links.dash',['places' => $places, 'days' =>$days, 'devs'=>$devs, ])->with($inputs);
+            return view('/admin_links.dash',['places' => $places, 'days' =>$days, 'devs'=>$devs, ]);
             }
             if($results[0]->registed==true && $results[0]->role== false){
                 return redirect('/developpeur')->with($inputs);
