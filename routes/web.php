@@ -25,7 +25,8 @@ Route::post('/login', 'AuthController@authentificate')->name('login');
 Route::post('/inscription', 'AuthController@inscrit')->name('inscription');
 Route::get('/admin', 'AuthController@admin');
 
-Route::get('/developpeur', 'AuthController@dev');
+Route::get('/developpeur', 'AuthController@dev')->name('developpeur');
+Route::get('/attente', 'AuthController@waiting')->name('attente');
 //links admin
 Route::get('/listdev', 'AdminController@listeDev')->name('dev');
 Route::get('/dash', 'AdminController@dash')->name('dash');
@@ -37,6 +38,8 @@ Route::get('/profile', 'AdminController@showprofile')->name('profile');
 Route::get('/parametre','AdminController@program')->name('parametre');
 Route::post('/horaire', 'AdminController@horaire')->name('horaire');
 Route::post('/place', 'AdminController@modiplace')->name('place');
+//links user
+Route::post('/reservation', 'userController@reserve')->name('reserve');
 //Route::get('/del', 'AdminController@index');
 
 

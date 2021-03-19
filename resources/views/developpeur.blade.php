@@ -1,130 +1,88 @@
 @extends('layout.template')
 @section('nav_side')
-<div class="sidebar-wrapper">
-        <ul class="nav">
-          <li class="nav-item active  ">
-            <a class="nav-link" href="./dashboard.html">
-              <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
-              <i class="material-icons">person</i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
-              <i class="material-icons">content_paste</i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
-              <i class="material-icons">library_books</i>
-              <p>Typography</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
-              <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
-              <i class="material-icons">location_ons</i>
-              <p>Maps</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
-              <i class="material-icons">notifications</i>
-              <p>Notifications</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./rtl.html">
-              <i class="material-icons">language</i>
-              <p>RTL Support</p>
-            </a>
-          </li>
-          <li class="nav-item active-pro ">
-            <a class="nav-link" href="./upgrade.html">
-              <i class="material-icons">unarchive</i>
-              <p>Upgrade to PRO</p>
-            </a>
-          </li>
-        </ul>
-      </div>
+    @include('user_links.nav_left')
 @endsection
 @section('top_side')
-<nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;">Dashboard</a>
-          </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end">
-            <form class="navbar-form">
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                  <i class="material-icons">search</i>
-                  <div class="ripple-container"></div>
-                </button>
-              </div>
-            </form>
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:;">
-                  <i class="material-icons">dashboard</i>
-                  <p class="d-lg-none d-md-block">
-                    Stats
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="material-icons">notifications</i>
-                  <span class="notification">5</span>
-                  <p class="d-lg-none d-md-block">
-                    Some Actions
-                  </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                  <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                  <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                  <a class="dropdown-item" href="#">Another Notification</a>
-                  <a class="dropdown-item" href="#">Another One</a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="material-icons">person</i>
-                  <p class="d-lg-none d-md-block">
-                    Account
-                  </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="#">Profile</a>
-                  <a class="dropdown-item" href="#">Settings</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Log out</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+    @include('user_links.nav_top')
 @endsection
 @section('content')
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Reservation de places</li>
+            </ol>
+        </nav>
+        <div class="row bg-light">
 
+            <div class="col-lg-6 col-md-6">
+                <h4 class="stat">Statut des places</h4>
+                <table class="table table-striped w-50 ">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Jours</th>
+                            <th scope="col">Places</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($days as $days)
+                        <tr>
+                            <td>{{$days->jours}}</td>
+                            <td>{{$days->places}}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-lg-6 col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header ">
+                    <h4><i class="bi bi-calendar-check"></i> Reserve maintenant</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{URL::route('reserve')}}" method="post">
+                    @csrf
+                        <fieldset class="mb-4">
+                            <legend>Jours</legend>
+                            <label for="browser">Veuillez choisir le jour</label>
+                            <input list="jours" name="jour"  class="form-control">
+                            <datalist id="jours">
+                                <option value="lundi">
+                                <option value="mardi">
+                                <option value="mercredi">
+                                <option value="jeudi">
+                                <option value="vendredi">
+                                <option value="samedi">
+                                <option value="dimanche">
+                            </datalist>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Horaire</legend>
+                            <div class="form-outline">
+                                <label class="form-label" for="form2">choisissez l'heure</label>
+                                <input list="horaires" name="heure"  class="form-control">
+                                <datalist id="horaires">
+                                    @foreach($horaire as $horaire)
+                                        <option value="{{$horaire->heur_reserve}}">
+                                    @endforeach
+
+                                </datalist>
+
+                            </div>
+                        </fieldset>
+                        <div class="row mt-3">
+                            <div class="col-lg-8"></div>
+                            <div class="col-lg-4"><button type="submit" class="btn btn-xs btn-success end" >Valider</button></div>
+                        </div>
+
+
+                    </form>
+                </div>
+
+            </div>
+
+            </div>
+        </div>
+    </div>
 @endsection

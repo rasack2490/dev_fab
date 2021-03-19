@@ -16,7 +16,11 @@ class AuthController extends Controller
     //
 
     public function dev(){
-        return view('/developpeur');
+        $days = DB::select('select * from days');
+        $heur = DB::select('select heur_reserve from horaires');
+        print_r(Session::get('email'));
+
+        return view('/developpeur',['days'=>$days, 'horaire'=>$heur]);
     }
 
 
@@ -45,12 +49,13 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
            // $is_registed = DB::select('select registed, role  from users where email=? AND password=?',$inputs);
            $results = DB::select('select registed, role from users where email =?', [$inputs[0]]);
-            
+
             if($results[0]->registed==true && $results[0]->role== true){
             return view('/admin_links.dash',['places' => $places, 'days' =>$days, 'devs'=>$devs, ]);
             }
             if($results[0]->registed==true && $results[0]->role== false){
-                return redirect('/developpeur')->with($inputs);
+
+                return redirect('/developpeur',)->with($inputs);
             }
             if($results[0]->registed==false && $results[0]->role== false){
                 return redirect('/attente')->with($inputs);
@@ -91,5 +96,8 @@ class AuthController extends Controller
     }
     public function admin(){
         return view('admin');
+    }
+    public function waiting(){
+        return view('attente');
     }
 }

@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="col-lg-6">
-        <div class="card">
+            <div class="card">
                 <div class="card-header bg-light">
                 <i class="bi bi-calendar-check"></i>Program des places
                 </div>
