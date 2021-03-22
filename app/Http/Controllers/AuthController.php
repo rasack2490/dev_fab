@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 
 
 
+
 class AuthController extends Controller
 {
     //
@@ -18,8 +19,6 @@ class AuthController extends Controller
     public function dev(){
         $days = DB::select('select * from days');
         $heur = DB::select('select heur_reserve from horaires');
-        print_r(Session::get('email'));
-
         return view('/developpeur',['days'=>$days, 'horaire'=>$heur]);
     }
 

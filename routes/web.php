@@ -40,6 +40,9 @@ Route::post('/horaire', 'AdminController@horaire')->name('horaire');
 Route::post('/place', 'AdminController@modiplace')->name('place');
 //links user
 Route::post('/reservation', 'userController@reserve')->name('reserve');
+Route::get('/user', 'userController@userprofile')->name('userprofile');
+Route::get('/deconnexion', 'userController@logout')->name('logout');
+Route::get('/reservation', 'AdminController@reserve')->name('reservation');
 //Route::get('/del', 'AdminController@index');
 
 

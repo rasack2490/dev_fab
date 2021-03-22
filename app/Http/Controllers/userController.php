@@ -21,8 +21,16 @@ class userController extends Controller
         $heur_reser = DB::select('select id_horaire from horaires where heur_reserve=?',[$data[1]]);
         //$user_reser = DB::select('select id_user from users where email=?',[Session::get('email')]);
         $reserved = false;
-        
+
         DB::insert('insert into reservations (reser_email, reser_horaire, reser_day, reserved) values (?, ?, ?, ?)', [Session::get('email'),$heur_reser[0]->id_horaire,$day_reser[0]->id_day,$reserved]);
         return redirect()->route('developpeur');
+    }
+    public function userprofile(){
+        $info =  DB::select('select * from users where email=?',[Session::get('email')]);
+        return view('user',['info'=>$info]);
+    }
+    public function logout () {
+        auth()->logout();
+        return redirect('/');
     }
 }

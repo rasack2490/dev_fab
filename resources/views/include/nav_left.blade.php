@@ -13,7 +13,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-item nav-link" href="admin_links/reservation.blade.php" data-toggle="tab">
+            <a class="nav-item nav-link" href="{{URL::route('reservation')}}" >
               <i class="material-icons">content_paste</i>
               <p>Liste reservations</p>
             </a>

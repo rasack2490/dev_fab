@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Mail;
+
+
 class AdminController extends Controller
 {
     //
@@ -31,12 +34,22 @@ class AdminController extends Controller
     public function supprime(Request $request){
         $email = $request->input('email');
         $del = DB::delete('delete from users where email=?',[$email]);
+        $details = [
+            'title' =>'Devs Web Fab',
+            'body' => 'Salut cher utilisateur vous avez ete supprimer de notre base de donnee, pour nous excuser nous vous offrons un rdv a la perle '
+        ];
+        Mail::to($email)->send(new \App\Mail\sendmail($details));
         return redirect()->route('dev');
     }
 
     public function accept(Request $request){
         $email = $request->input('validate');
         DB::update('update users set registed = 1 where email = ?', [$email]);
+        $details = [
+            'title' =>'Devs Web Fab',
+            'body' => 'Votre inscription a ete valider veuillez vous connecter avec ce lien. http://127.0.0.1:8000/ '
+        ];
+        Mail::to($email)->send(new \App\Mail\sendmail($details));
         return redirect()->route('devAccept');
     }
 
@@ -70,5 +83,8 @@ class AdminController extends Controller
     public function showprofile(){
       $info =  DB::select('select * from users where email=?',[Session::get('email')]);
       return view('admin_links.profile',['info'=>$info]);
+    }
+    public function reserve(){
+        return view('admin_links.reservation');
     }
 }
