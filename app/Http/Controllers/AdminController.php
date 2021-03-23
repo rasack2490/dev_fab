@@ -85,6 +85,8 @@ class AdminController extends Controller
       return view('admin_links.profile',['info'=>$info]);
     }
     public function reserve(){
-        return view('admin_links.reservation');
+        $reserve =  DB::select('SELECT reser_email, heur_reserve, jours FROM reservations INNER JOIN horaires ON reservations.reser_horaire = horaires.id_horaire INNER JOIN days ON reservations.reser_day = days.id_day');
+        
+        return view('admin_links.reservation',['reserve'=>$reserve]);
     }
 }

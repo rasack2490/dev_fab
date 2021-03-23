@@ -27,64 +27,26 @@
     <table cellpadding="0" cellspacing="0" border="0" class="dataTable " id="example">
     <thead>
         <tr>
-            <th>Nom</th>
-            <th>prenom</th>
-            <th>email</th>
-            <th>status</th>
-            <th>Souscription</th>
-            <th>status</th>
-            <th>Souscription</th>
+            <th>Email</th>
+            <th>Heure de reservation</th>
+            <th>Jour de reservation</th>
+            <th>Action</th>
+            <th>Action</th>
+
         </tr>
     </thead>
     <tbody>
+        @foreach($reserve as $reserve)
         <tr>
-            <td>Trident</td>
-            <td>Internet
-                 Explorer 4.0</td>
-            <td>Win 95+</td>
-            <td> 4</td>
-            <td>X</td>
-            <td> 4</td>
-            <td>X</td>
-        </tr>
 
-        <tr>
-            <td>KHTML</td>
-            <td>Konqureror 3.5</td>
-            <td>KDE 3.5</td>
-            <td>3.5</td>
-            <td>A</td>
-            <td> 4</td>
-            <td>X</td>
+            <td>{{$reserve->reser_email}}</td>
+            <td>{{$reserve->heur_reserve}}</td>
+            <td>{{$reserve->jours}}</td>
+            <td> <button type="submit" class="btn btn-xs btn-warning" onclick="return confirm('Voulez vous refuser inscription?')">Refuser</button></td>
+            <td><button type="submit" class="btn btn-xs btn-success" onclick="return confirm('Voulez vous refuser inscription?')">Accepter</button></td>
         </tr>
-        <tr>
-            <td>Tasman</td>
-            <td>Internet Explorer 4.5</td>
-            <td>Mac OS 8-9</td>
-            <td>-</td>
-            <td>X</td>
-            <td> 4</td>
-            <td>X</td>
-        </tr>
-        <tr>
-            <td>Tasman</td>
-            <td>Internet Explorer 5.1</td>
-            <td>Mac OS 7.6-9</td>
-            <td>1</td>
-            <td>C</td>
-            <td> 4</td>
-            <td>X</td>
-        </tr>
+        @endforeach
 
-        <tr>
-            <td>Misc</td>
-            <td>Dillo 0.8</td>
-            <td>Embedded devices</td>
-            <td>-</td>
-            <td>X</td>
-            <td> 4</td>
-            <td>X</td>
-        </tr>
 
     </tbody>
 </table>
