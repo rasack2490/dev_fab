@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Str;
-$DATABASE_URL=parse_url(' mysql://o8cw69jb5hkzan2t:qk8v7mwm4wefkxc5@u6354r3es4optspf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/s7zkt38q77zomymy');
+$url=parse_url("mysql://b3df27702e3aa7:1823acd6@us-cdbr-east-03.cleardb.com/heroku_254bd4d366a2038?reconnect=true");
+$host = $url["host"] ?? null;
+$username = $url["user"] ?? null;
+$password = $url["pass"] ?? null;
+$database = substr($url["path"], 1);
 return [
 
     /*
@@ -45,12 +49,12 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' => $DATABASE_URL["host"],
-            'host' => $DATABASE_URL["port"],
+            'url' => env('DATABASE_URL'),
+            'host' => $host,
             'port' => env('DB_PORT', '3306'),
-            'database' => ltrim($DATABASE_URL["path"], "/"),
-            'username' => $DATABASE_URL["user"],
-            'password' => $DATABASE_URL["pass"],
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
